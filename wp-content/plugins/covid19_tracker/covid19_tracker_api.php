@@ -13,7 +13,7 @@ class covid19_tracker_api {
     function get_summary()
     {
         
-        $summary_url = $this->$api_base .'/summary'; 
+        $summary_url = $this->api_base .'/summary'; 
         
         $ch = curl_init();
         curl_setopt ($ch, CURLOPT_URL, $summary_url);
@@ -26,7 +26,7 @@ class covid19_tracker_api {
     }    
     function get_country_summary($country)
     {
-        $summary_url = $this->$api_base .'/live/country/'.$country;
+        $summary_url = $this->api_base .'/live/country/'.$country;
         $ch = curl_init();
         curl_setopt ($ch, CURLOPT_URL, $summary_url);
         curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, 5);
