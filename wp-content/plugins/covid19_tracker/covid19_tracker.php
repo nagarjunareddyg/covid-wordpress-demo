@@ -17,6 +17,8 @@ class covid19_tracker {
     {
         add_shortcode('covid19_tracker', array( $this,'tracker_shortcode') );
         add_action( 'wp_print_styles', array( $this, 'tracker_stylesheet') );
+
+
     }
     public function tracker_stylesheet()
     {
@@ -27,7 +29,8 @@ class covid19_tracker {
     public function get_world_summery()
     {
 
-        $resp = covid19_tracker_api :: get_summary();
+        $api_obj = new covid19_tracker_api();
+        $resp = $api_obj->get_summary();
      
         $world_data = $resp['Global'];
         $country_summery = $resp['Countries'];
@@ -96,7 +99,8 @@ class covid19_tracker {
 
     public function get_country_summary($country)
     {
-        $resp = covid19_tracker_api :: get_country_summary($country);
+        $api_obj = new covid19_tracker_api();
+        $resp = $api_obj->get_country_summary($country);
 
         $country_data = end($resp) ;
  
